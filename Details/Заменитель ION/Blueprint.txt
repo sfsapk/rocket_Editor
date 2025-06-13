@@ -1,0 +1,28 @@
+{
+  "center": 10.0,
+  "parts": [
+    {
+      "n": "Placeholder ION",
+      "p": {
+        "x": 10.0,
+        "y": 69.0
+      },
+      "o": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.0
+      },
+      "t": "-Infinity",
+      "B": {
+        "engine_on": false
+      }
+    }
+  ],
+  "stages": [],
+  "rotation": 0.0,
+  "offset": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "interiorView": true
+}

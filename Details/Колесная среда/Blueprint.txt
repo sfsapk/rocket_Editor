@@ -1,0 +1,28 @@
+{
+  "center": 10.0,
+  "parts": [
+    {
+      "n": "Wheel Medium",
+      "p": {
+        "x": 10.0,
+        "y": 67.0
+      },
+      "o": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.0
+      },
+      "t": "-Infinity",
+      "B": {
+        "wheel_on": false
+      }
+    }
+  ],
+  "stages": [],
+  "rotation": 0.0,
+  "offset": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "interiorView": true
+}

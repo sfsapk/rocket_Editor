@@ -1,0 +1,42 @@
+{
+  "center": 10.0,
+  "parts": [
+    {
+      "n": "Fairing",
+      "p": {
+        "x": 10.0,
+        "y": 66.0
+      },
+      "o": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.0
+      },
+      "t": "-Infinity",
+      "N": {
+        "width_original": 3.0,
+        "width_a": 3.0,
+        "width_b": 3.0,
+        "height": 2.0,
+        "force_percent": 0.5
+      },
+      "B": {
+        "occupied_a": false,
+        "detach_edge": true,
+        "adapt_to_tank": true
+      },
+      "T": {
+        "fragment": "",
+        "color_tex": "_",
+        "shape_tex": "_"
+      }
+    }
+  ],
+  "stages": [],
+  "rotation": 0.0,
+  "offset": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "interiorView": true
+}

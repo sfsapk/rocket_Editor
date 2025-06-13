@@ -1,0 +1,28 @@
+{
+  "center": 10.0,
+  "parts": [
+    {
+      "n": "Capsule",
+      "p": {
+        "x": 10.0,
+        "y": 66.5
+      },
+      "o": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.0
+      },
+      "t": "-Infinity",
+      "N": {
+        "temperature": "-Infinity"
+      }
+    }
+  ],
+  "stages": [],
+  "rotation": 0.0,
+  "offset": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "interiorView": true
+}

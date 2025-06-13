@@ -1,0 +1,30 @@
+{
+  "center": 10.0,
+  "parts": [
+    {
+      "n": "Engine Hawk",
+      "p": {
+        "x": 10.0,
+        "y": 68.5
+      },
+      "o": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.0
+      },
+      "t": "-Infinity",
+      "B": {
+        "engine_on": false,
+        "heat_on__for_creative_use": true,
+        "gimbal_on": true
+      }
+    }
+  ],
+  "stages": [],
+  "rotation": 0.0,
+  "offset": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "interiorView": true
+}

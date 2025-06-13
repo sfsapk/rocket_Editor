@@ -1,0 +1,39 @@
+{
+  "center": 10.0,
+  "parts": [
+    {
+      "n": "Fairing Cone Round",
+      "p": {
+        "x": 10.0,
+        "y": 69.0
+      },
+      "o": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.0
+      },
+      "t": "-Infinity",
+      "N": {
+        "force_percent": 0.5,
+        "width_original": 2.0,
+        "width": 2.0
+      },
+      "B": {
+        "detach_edge": true,
+        "adapt_to_tank": true
+      },
+      "T": {
+        "fragment": "",
+        "color_tex": "_",
+        "shade_tex": "_"
+      }
+    }
+  ],
+  "stages": [],
+  "rotation": 0.0,
+  "offset": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "interiorView": true
+}
