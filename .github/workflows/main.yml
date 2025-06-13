@@ -6,12 +6,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4  # Обновлено до v4
+    - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v5  # Обновлено до v5
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.10'  # Рекомендуется Python 3.10 для Kivy
+        python-version: '3.10'
 
     - name: Install dependencies
       run: |
@@ -32,7 +32,7 @@ jobs:
           libavformat-dev \
           libavcodec-dev \
           zlib1g-dev
-        pip install buildozer
+        pip install buildozer cython  # Added Cython here
 
     - name: Build APK
       run: |
@@ -41,7 +41,7 @@ jobs:
         cp bin/*.apk apk/
 
     - name: Upload APK
-      uses: actions/upload-artifact@v4  # Обновлено до v4
+      uses: actions/upload-artifact@v4
       with:
         name: rocket-editor-apk
         path: apk
