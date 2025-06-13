@@ -13,7 +13,7 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies
+    - name: Install system dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y \
@@ -35,11 +35,19 @@ jobs:
           aidl
         pip install buildozer cython
 
+    - name: Initialize Buildozer
+      run: |
+        buildozer init
+        buildozer android update
+
     - name: Accept Android licenses
       run: |
         mkdir -p ~/.android
         touch ~/.android/repositories.cfg
-        yes | ~/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+        echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > ~/.android/licenses.cfg
+        echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> ~/.android/licenses.cfg
+        echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> ~/.android/licenses.cfg
+        echo "84831b9409646a918e30573bab4c9c91346d8abd" >> ~/.android/licenses.cfg
 
     - name: Build APK
       run: |
