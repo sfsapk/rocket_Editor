@@ -35,13 +35,10 @@ jobs:
           aidl
         pip install buildozer cython
 
-    - name: Initialize Buildozer
+    - name: Setup Android SDK
       run: |
-        buildozer init
+        # Only update if needed, skip init since spec exists
         buildozer android update
-
-    - name: Accept Android licenses
-      run: |
         mkdir -p ~/.android
         touch ~/.android/repositories.cfg
         echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > ~/.android/licenses.cfg
