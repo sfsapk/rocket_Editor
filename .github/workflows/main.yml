@@ -45,7 +45,6 @@ jobs:
 
     - name: Configure environment
       run: |
-        # Set environment variables
         echo "ANT_HOME=/usr/share/ant" >> $GITHUB_ENV
         echo "JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64" >> $GITHUB_ENV
         echo "PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH" >> $GITHUB_ENV
@@ -55,13 +54,20 @@ jobs:
         pip install --upgrade pip wheel setuptools
         pip install buildozer cython python-for-android
 
+    - name: Initialize Python-for-Android
+      run: |
+        mkdir -p ~/.buildozer/android/platform/python-for-android
+        python -m pythonforandroid.toolchain create \
+          --dist_name=tempdist \
+          --bootstrap=sdl2 \
+          --requirements=python3,kivy \
+          --arch=arm64-v8a
+
     - name: Configure Buildozer
       run: |
         mkdir -p ~/.buildozer
         echo "[buildozer]" > ~/.buildozer/config.ini
         echo "android.ant_path = /usr/bin/ant" >> ~/.buildozer/config.ini
-        echo "android.sdk_path = $HOME/.buildozer/android/platform/android-sdk" >> ~/.buildozer/config.ini
-        echo "android.ndk_path = $HOME/.buildozer/android/platform/android-ndk" >> ~/.buildozer/config.ini
         echo "android.use_prebuilt_libffi = True" >> ~/.buildozer/config.ini
 
         mkdir -p ~/.android
@@ -73,7 +79,6 @@ jobs:
 
     - name: Build APK
       run: |
-        buildozer android clean
         buildozer -v android debug
         mkdir apk
         cp bin/*.apk apk/
