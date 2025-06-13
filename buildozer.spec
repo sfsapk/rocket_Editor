@@ -1,56 +1,39 @@
 [app]
 
-# Название вашего приложения
+# Application configuration
 title = Rocket Editor SFS
-
-# Имя пакета (должно быть уникальным)
 package.name = rockeditorsfs
-
-# Домен (обычно используется com.example)
 package.domain = org.example
-
-# Путь к основному файлу Python
 source.dir = .
-
-# Главный файл Python
 source.include_exts = py,png,jpg,jpeg,json,txt
-
-# Версия приложения
 version = 1.0.0
 
-# Требования
-requirements = python3,kivy,openssl,pyjnius,android
+# Requirements (updated)
+requirements = python3==3.10.0,kivy==2.2.1,openssl,pyjnius,android
 
-# Разрешения Android
+# Android configuration (modern syntax)
+android.archs = arm64-v8a  # Multi-architecture support
+android.minapi = 21        # Minimum Android API level
+android.ndk = 23b          # NDK version
+android.sdk_path =         # Leave empty for auto-detect
+android.build_tools_version = 34.0.0  # Latest stable build-tools
+
+# Permissions
 android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 
-# Минимальная версия Android API
-android.api = 29
-
-# Версия SDK
-android.sdk = 28
-
-# Версия NDK
-android.ndk = 23b
-
-# Архитектура
-android.arch = arm64-v8a
-
-# Копирование дополнительных файлов и папок
+# Additional files
 source.include_patterns = Details/*,Details_Output/*,icons/*,backgrounds/*
 
-# Иконка приложения (должна быть в корне проекта)
+# App icon
 icon.filename = %(source.dir)s/icons/icon.png
 
-# Ориентация экрана
+# Orientation
 orientation = portrait
-
-# Полный экран
 fullscreen = 0
 
-# Жесткая клавиатура (отключаем системную)
+# Input settings
 android.soft_input_mode = adjustResize
 
-# Дополнительные настройки
+# Metadata
 android.allow_backup = True
 android.meta_data = android.app.uses_cleartext_traffic=true
