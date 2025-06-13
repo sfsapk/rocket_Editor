@@ -19,7 +19,7 @@ source.include_exts = py,png,jpg,jpeg,json,txt
 
 # Requirements
 requirements = python3,kivy,openssl,pyjnius,android
-
+requirements = python-for-android==2023.10.06, ...
 # Android configuration
 android.archs = arm64-v8a
 android.minapi = 21
