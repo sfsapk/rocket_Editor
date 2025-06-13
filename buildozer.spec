@@ -5,7 +5,14 @@ title = Rocket Editor SFS
 package.name = rockeditorsfs
 package.domain = org.example
 version = 1.0.0  # <-- This was missing
+# Python-for-android configuration
+p4a.bootstrap = sdl2
+p4a.ignore_setup_py = True
+p4a.release_artifact = False
 
+# NDK configuration
+android.ndk_path = 
+android.ndk_version = 23b
 # Build configuration
 source.dir = .
 source.include_exts = py,png,jpg,jpeg,json,txt
