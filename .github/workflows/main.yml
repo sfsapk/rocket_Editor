@@ -41,7 +41,8 @@ jobs:
           autoconf \
           gettext \
           libffi-dev \
-          pkg-config
+          pkg-config \
+          libltdl-dev
 
     - name: Configure environment
       run: |
@@ -54,22 +55,21 @@ jobs:
         pip install --upgrade pip wheel setuptools
         pip install buildozer cython python-for-android
 
-    - name: Initialize Python-for-Android
-      run: |
-        mkdir -p ~/.buildozer/android/platform/python-for-android
-        python -m pythonforandroid.toolchain create \
-          --dist_name=tempdist \
-          --bootstrap=sdl2 \
-          --requirements=python3,kivy \
-          --arch=arm64-v8a
-
-    - name: Configure Buildozer
+    - name: Force prebuilt libffi
       run: |
         mkdir -p ~/.buildozer
         echo "[buildozer]" > ~/.buildozer/config.ini
-        echo "android.ant_path = /usr/bin/ant" >> ~/.buildozer/config.ini
         echo "android.use_prebuilt_libffi = True" >> ~/.buildozer/config.ini
+        echo "android.ignore_prebuilt_libffi_error = True" >> ~/.buildozer/config.ini
+        
+        # Create dummy recipe to force prebuilt usage
+        mkdir -p ~/.local/share/python-for-android/recipes/libffi
+        echo "from pythonforandroid.recipe import Recipe" > ~/.local/share/python-for-android/recipes/libffi/__init__.py
+        echo "class LibffiRecipe(Recipe):" >> ~/.local/share/python-for-android/recipes/libffi/__init__.py
+        echo "    pass" >> ~/.local/share/python-for-android/recipes/libffi/__init__.py
 
+    - name: Configure Android licenses
+      run: |
         mkdir -p ~/.android
         touch ~/.android/repositories.cfg
         echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > ~/.android/licenses.cfg
