@@ -32,13 +32,27 @@ jobs:
           libavformat-dev \
           libavcodec-dev \
           zlib1g-dev \
-          aidl
+          aidl \
+          ant  # Install Ant from system packages
         pip install buildozer cython
 
-    - name: Setup Android SDK
+    - name: Configure Buildozer
       run: |
-        # Only update if needed, skip init since spec exists
-        buildozer android update
+        # Create buildozer.spec if not exists
+        if [ ! -f buildozer.spec ]; then
+          buildozer init
+        fi
+        # Set alternative Ant download mirror
+        echo "[app]" > buildozer.spec
+        echo "title = Rocket Editor SFS" >> buildozer.spec
+        echo "package.name = rockeditorsfs" >> buildozer.spec
+        echo "package.domain = org.example" >> buildozer.spec
+        echo "source.dir = ." >> buildozer.spec
+        echo "android.ant_path = /usr/bin/ant" >> buildozer.spec  # Use system Ant
+        echo "android.skip_update = True" >> buildozer.spec  # Skip automatic updates
+
+    - name: Setup Android environment
+      run: |
         mkdir -p ~/.android
         touch ~/.android/repositories.cfg
         echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > ~/.android/licenses.cfg
