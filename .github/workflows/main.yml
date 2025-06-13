@@ -8,6 +8,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Verify buildozer.spec
+      run: |
+        if [ ! -f buildozer.spec ]; then
+          echo "[app]" > buildozer.spec
+          echo "title = Rocket Editor SFS" >> buildozer.spec
+          echo "package.name = rockeditorsfs" >> buildozer.spec
+          echo "package.domain = org.example" >> buildozer.spec
+          echo "version = 1.0.0" >> buildozer.spec
+          echo "source.dir = ." >> buildozer.spec
+        fi
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -33,23 +44,11 @@ jobs:
           libavcodec-dev \
           zlib1g-dev \
           aidl \
-          ant  # Install Ant from system packages
-        pip install buildozer cython
+          ant
 
-    - name: Configure Buildozer
+    - name: Install Python dependencies
       run: |
-        # Create buildozer.spec if not exists
-        if [ ! -f buildozer.spec ]; then
-          buildozer init
-        fi
-        # Set alternative Ant download mirror
-        echo "[app]" > buildozer.spec
-        echo "title = Rocket Editor SFS" >> buildozer.spec
-        echo "package.name = rockeditorsfs" >> buildozer.spec
-        echo "package.domain = org.example" >> buildozer.spec
-        echo "source.dir = ." >> buildozer.spec
-        echo "android.ant_path = /usr/bin/ant" >> buildozer.spec  # Use system Ant
-        echo "android.skip_update = True" >> buildozer.spec  # Skip automatic updates
+        pip install buildozer cython
 
     - name: Setup Android environment
       run: |
